@@ -4,7 +4,7 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import Footer from './Footer';
 import { FaBook, FaEye } from 'react-icons/fa';
-
+import Navbar from './Navbar'; 
 
 function Detail() { 
     let { slug } = useParams();
@@ -38,7 +38,8 @@ function Detail() {
 
     return (
       <>
-        <div className="container mx-auto px-4 p-20">
+        <Navbar />
+        <div className="container mx-auto px-4 p-10">
           <div className="flex flex-col items-center justify-center min-h-screen">
             <div className="text-center mb-8">
               {/* <img src={article.image_path}
