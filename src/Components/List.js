@@ -37,7 +37,7 @@ function App() {
   async function loadMoreData() {
     const response = await getArticles( next );
     
-    setArticles( [...articles, ...response.results] );
+    setArticles(currentArticles => [...currentArticles, ...response.results]);
     setNext( response.next );
   }
 
@@ -65,8 +65,8 @@ function App() {
         </div>
 
         <div className="pb-8 ">
-          {articles.map(article => 
-            <div className="mt-4">
+          {articles.map((article, index) => 
+            <div key={article.id || index} className="mt-4">
               <Card {...article} />
             </div>
           )}
