@@ -24,14 +24,19 @@ function App() {
     }
   }
 
+  const updateArticles = async (newQuery = query, newCategory = category) => {
+    if (newQuery !== query) setQuery(newQuery);
+    if (newCategory !== category) setCategory(newCategory);
+  
+    fetchData(`${ARTICLE_API_URL}?q=${newQuery}&category=${newCategory}`);
+  }
+
   const searchArticles = async (query) => {
-    setQuery( query );
-    fetchData( `${ARTICLE_API_URL}?q=${query}&category=${category}` );
+    updateArticles(query);
   }
 
   const filterArticles = async (category) => {
-    setCategory( category );
-    fetchData( `${ARTICLE_API_URL}?q=${query}&category=${category}` );
+    updateArticles(undefined, category);
   }
   
   async function loadMoreData() {
