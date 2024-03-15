@@ -2,7 +2,11 @@ import { FaBook, FaEye } from 'react-icons/fa';
 
 function Card( props ) {
   return (
-    <div key={ props.slug } className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div 
+      id={props.slug} 
+      key={ props.slug } 
+      className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+        
       <div className="md:flex">
         <div className="md:flex-shrink-0">
         <img 
