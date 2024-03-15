@@ -5,7 +5,10 @@ import Search from './Articles/Search';
 import React, { useEffect, useState } from 'react';
 
 function App() {
-  const [next, setNext] = useState( 'https://pywombat.com/api/v1/articles/' );
+  const API_URL = process.env.HOST_API;
+  const ARTICLE_API_URL = `${API_URL}/articles/`;
+
+  const [next, setNext] = useState( ARTICLE_API_URL );
   const [articles, setArticles] = useState( [] );
   
   const getArticles = async () => {
