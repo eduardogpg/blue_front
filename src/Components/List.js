@@ -5,7 +5,8 @@ import Search from './Articles/Search';
 import React, { useEffect, useState } from 'react';
 
 function App() {
-  const ARTICLE_API_URL = `${ process.env.REACT_APP_HOST_API }/articles/`;
+  const REACT_APP_HOST_API = 'https://pywombat.com/api/v1';
+  const ARTICLE_API_URL = `${ REACT_APP_HOST_API }/articles/`;
 
   const [next, setNext] = useState( null );
   const [query, setQuery] = useState( '' );
