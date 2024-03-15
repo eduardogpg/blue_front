@@ -14,9 +14,14 @@ function Search( { searchArticles, filterArticles } ){
       <div key="filter" className="max-w-md mx-auto bg-white rounded-xl  md:max-w-2xl">
         <div className="space-x-2 text-center">
           <button 
+            onClick={() => handleFilter('')}
+            className="py-2 px-4 rounded bg-gray-200 text-gray-800 font-bold hover:bg-gray-300 focus:outline-none">
+            All
+          </button>
+          <button 
             onClick={() => handleFilter('beginners')}
             className="py-2 px-4 rounded bg-gray-200 text-gray-800 font-bold hover:bg-gray-300 focus:outline-none">
-            Beginners
+            Beginner
           </button>
           <button 
             onClick={() => handleFilter('medium')}

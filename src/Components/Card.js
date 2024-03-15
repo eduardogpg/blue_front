@@ -1,6 +1,19 @@
 import { FaBook, FaEye } from 'react-icons/fa';
 
 function Card( props ) {
+  
+  function getCategory(level) {
+    if (level === 1) {
+      return 'Beginner';
+    } else if (level === 2) {
+      return 'Intermediate';
+    } else if (level === 3) {
+      return 'Advanced';
+    } else {
+      return 'Unknown';
+    }
+  }
+
   return (
     <div 
       id={props.slug} 
@@ -29,6 +42,9 @@ function Card( props ) {
             <div className="flex items-center space-x-2">
               <span>{props.reading_time} min. read</span>
               <FaBook  />
+            </div>
+            <div className="flex items-center space-x-2">
+              <span>Category: { getCategory( props.level ) }</span>
             </div>
             <div className="flex items-center space-x-2">
               <span>{ props.created_at }</span>

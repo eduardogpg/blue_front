@@ -5,9 +5,11 @@ import Search from './Articles/Search';
 import React, { useEffect, useState } from 'react';
 
 function App() {
-  const ARTICLE_API_URL = `${ process.env.REACT_APP_HOST_API }/articles/?origin=web`;
+  const ARTICLE_API_URL = `${ process.env.REACT_APP_HOST_API }/articles/`;
 
   const [next, setNext] = useState( null );
+  const [query, setQuery] = useState( '' );
+  const [category, setCategory] = useState( '' );
   const [articles, setArticles] = useState( [] );
   
   const getArticles = async (endpoint) => {
@@ -23,30 +25,31 @@ function App() {
   }
 
   const searchArticles = async (query) => {
-    const endpoint = `${ ARTICLE_API_URL }&q=${ query }`;
-    const response = await getArticles(endpoint);
-
-    setArticles(response.results);
-    setNext(response.next);
+    setQuery( query );
+    fetchData( `${ARTICLE_API_URL}?q=${query}&category=${category}` );
   }
 
   const filterArticles = async (category) => {
-    const endpoint = `${ ARTICLE_API_URL }&category=${ category }`;
-    const response = await getArticles(endpoint);
-
-    setArticles(response.results);
-    setNext(response.next);
+    setCategory( category );
+    fetchData( `${ARTICLE_API_URL}?q=${query}&category=${category}` );
   }
   
-  async function fetchData() {
-    const response = await getArticles(ARTICLE_API_URL);
+  async function loadMoreData() {
+    const response = await getArticles( next );
     
-    setNext(response.next);
-    setArticles([...articles, ...response.results]);
+    setArticles( [...articles, ...response.results] );
+    setNext( response.next );
+  }
+
+  async function fetchData(endpoint) {
+    const response = await getArticles( endpoint );
+    
+    setArticles( response.results );
+    setNext( response.next );
   };
 
   useEffect( () => {
-    fetchData();
+    fetchData(ARTICLE_API_URL);
   }, [] );
 
   return (
@@ -73,7 +76,7 @@ function App() {
           <div className="text-center text-lg font-semibold mb-8">Estas al día 🐍</div>
         ) : (
           <div className="text-center mb-8">
-            <button onClick={ fetchData } className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">Load More</button>
+            <button onClick={ loadMoreData } className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">Load More</button>
           </div>
         ) }
 
