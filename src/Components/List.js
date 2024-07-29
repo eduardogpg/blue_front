@@ -5,19 +5,22 @@ import Search from './Articles/Search';
 import React, { useEffect, useState } from 'react';
 import { FaBook, FaEye } from 'react-icons/fa';
 
-
 const ArticleCard = ({ article }) => (
   <div className="flex flex-col items-center w-full max-w-sm mx-auto my-4 p-4 rounded-lg shadow-md">
     <div className="flex-shrink-0">
-      <img 
-        src={article.image} 
-        alt={article.title} 
-        className="w-full h-48 object-cover rounded"
-      />
+      <a href={ article.slug }>
+        <img 
+          src={article.image} 
+          alt={article.title} 
+          className="w-full h-48 object-cover rounded"
+        />
+      </a>
     </div>
     <div className="flex flex-col justify-between flex-grow text-center mt-4">
       <div>
-        <h1 className="text-2xl font-bold font-sans text-gray-900 mb-2">{article.title}</h1>
+        <a href={ article.slug } className="cursor-pointer block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+          <h1 className="text-2xl font-bold font-sans text-gray-900 mb-2">{article.title}</h1>
+        </a>
         <div className="flex justify-center items-center space-x-2 mb-2">
           <span>12/01/2024</span>
         </div>
