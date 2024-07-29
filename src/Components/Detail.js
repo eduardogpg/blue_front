@@ -37,44 +37,46 @@ function Detail() {
     }
 
     return (
-      <>
-        <Navbar />
-        <div className="container mx-auto px-4 p-10">
-          <div className="flex flex-col items-center justify-center min-h-screen">
-            <div className="text-center mb-8">
-              {/* <img src={article.image_path}
-                alt="Image description" 
-                className="mx-auto w-full mb-8 rounded-lg max-w-xl"
-              /> */}
-              <h1 className="text-5xl font-bold font-sans text-gray-900 mb-4">{article.title}</h1>
-              
-              <div className="flex justify-center items-center space-x-4 mb-4">
-                <span className="font-semibold">By: { capitalize( article.author.username ) } </span>
-                <span>{ article.created_at }</span>
-                <div className="flex items-center space-x-2">
-                  <span>{article.reading_time} min. read</span>
-                  <FaBook className="text-xl" />
-                </div>
-              </div>
+     <>
+      <Navbar />
 
+      <div className="flex flex-col items-center max-w-5xl mx-auto my-4 p-4 rounded-lg">
+        <img 
+          src="https://pywombat.s3.us-east-2.amazonaws.com/background/bg_python.png" 
+          alt="Pywomtbat Logo" 
+          className="w-4/5 h-auto"
+        />
+        <div className="text-center mt-4">
+          <h1 className="text-5xl font-bold font-sans text-gray-900 mb-4">{article.title}</h1>
+          <div className="flex justify-center items-center space-x-4 mb-4">
+            <span className="font-semibold">Author: { capitalize( article.author.username ) } </span>
+            <span>{ article.created_at }</span>
+            <div className="flex items-center space-x-2">
+              <span>{article.reading_time} min. read</span>
+              <FaBook className="text-xl" />
             </div>
-            <hr/>
-            <div className="prose lg:prose-xl font-sans bold text-gray-600">
-              <p>
-                <div 
-                  className="prose lg:prose-xl prose-indigo max-w-none"
-                  dangerouslySetInnerHTML={renderMarkdown(article.markdown_content)}
-                ></div>
-              </p>
-            </div>
-            
           </div>
+          <hr/>
+        </div>
+      </div>
+      
+      <div className="container mx-auto px-4 p-10">
+        <div className="flex flex-col items-center justify-center min-h-screen">
+          <div className="prose lg:prose-xl font-sans bold text-gray-600">
+            <p>
+              <div 
+                className="prose lg:prose-xl prose-indigo max-w-none"
+                dangerouslySetInnerHTML={renderMarkdown(article.markdown_content)}
+              ></div>
+            </p>
+          </div>
+        </div>
+      </div>
           
-        </div>
-        <div className="container mx-auto px-4 py-8">
-          <Footer />
-        </div>
-      </>
+      <div className="container mx-auto px-4 py-8">
+        <Footer />
+      </div>
+    </>
     );
 }
 
