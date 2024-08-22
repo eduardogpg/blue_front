@@ -10,7 +10,7 @@ const ArticleCard = ({ article }) => (
     <div className="flex-shrink-0">
       <a href={ article.slug }>
         <img 
-          src={article.image} 
+          src={article.image_url} 
           alt={article.title} 
           className="w-full h-48 object-cover rounded"
         />
@@ -22,11 +22,13 @@ const ArticleCard = ({ article }) => (
           <h1 className="text-2xl font-bold font-sans text-gray-900 mb-2">{article.title}</h1>
         </a>
         <div className="flex justify-center items-center space-x-2 mb-2">
-          <span>12/01/2024</span>
+          <span>{article.created_at_format ?? article.created_at}</span>
         </div>
         <div className="flex justify-center items-center space-x-2 mb-2">
-          <span>10 Vistas - </span>
-          <span>Categoria - </span>
+          <span>{article.category ?? 'Python' }</span>
+        </div>
+        <div className="flex justify-center items-center space-x-2 mb-2">
+          <span>{article.views} Vistas</span>
           <div className="flex items-center space-x-2">
             <span>{article.reading_time} min.</span>
             <FaBook className="text-xl" />
@@ -84,8 +86,10 @@ function App() {
   async function fetchData(endpoint) {
     const response = await getArticles( endpoint );
     
-    setArticles( response.results );
-    setNext( response.next );
+    console.log(response.results);
+
+    setArticles(response.results);
+    setNext(response.next );
   };
 
   useEffect( () => {
@@ -95,7 +99,6 @@ function App() {
   return (
     <>
       <Navbar />
-
       <div className="container mx-auto">
         <div className="py-4">
           <Search 
@@ -119,7 +122,6 @@ function App() {
             <button onClick={ loadMoreData } className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">Cargar más</button>
           </div>
         ) }
-
         <div className="px-4">
           <Footer />
         </div>
