@@ -1,0 +1,73 @@
+/* General styling for the Python code block */
+pre.language-python {
+    background-color: #2b2b2b; /* Dark background */
+    color: #f8f8f2; /* Default text color */
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Fira Code', monospace; /* Use a monospaced font */
+    font-size: 1em;
+  }
+  
+  /* Python comments */
+  pre.language-python .token.comment {
+    color: #6272a4; /* Grayish blue for comments */
+    font-style: italic;
+  }
+  
+  /* Python keywords (e.g., def, class, return) */
+  pre.language-python .token.keyword {
+    color: #ff79c6; /* Pinkish for keywords */
+    font-weight: bold;
+  }
+  
+  /* Python function names */
+  pre.language-python .token.function {
+    color: #50fa7b; /* Light green for function names */
+  }
+  
+  /* Python strings */
+  pre.language-python .token.string {
+    color: #f1fa8c; /* Yellow for strings */
+  }
+  
+  /* Python numbers */
+  pre.language-python .token.number {
+    color: #bd93f9; /* Purple for numbers */
+  }
+  
+  /* Python operators (+, -, *, /, etc.) */
+  pre.language-python .token.operator {
+    color: #ffb86c; /* Orange for operators */
+  }
+  
+  /* Python punctuation (commas, colons, etc.) */
+  pre.language-python .token.punctuation {
+    color: #8be9fd; /* Light blue for punctuation */
+  }
+  
+  /* Python built-in constants (e.g., True, False, None) */
+  pre.language-python .token.constant {
+    color: #ff5555; /* Reddish for built-in constants */
+  }
+  
+  /* Python boolean values (True, False) */
+  pre.language-python .token.boolean {
+    color: #bd93f9; /* Same color as numbers for booleans */
+    font-weight: bold;
+  }
+  
+  /* Python decorators (e.g., @staticmethod, @classmethod) */
+  pre.language-python .token.decorator {
+    color: #ff79c6; /* Pinkish for decorators */
+  }
+  
+  /* Add line highlighting */
+  pre.language-python .line-highlight {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight highlight for specific lines */
+    display: block;
+    width: 100%;
+    margin: 0 -16px;
+    padding: 0 16px;
+  }
+  
